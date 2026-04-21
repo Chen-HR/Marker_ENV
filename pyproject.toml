@@ -1,0 +1,24 @@
+[project]
+name = "marker_env"
+version = "0.1.0"
+description = ""
+readme = "Readme.md"
+requires-python = ">=3.11"
+dependencies = [
+  "marker-pdf[full]", # https://github.com/datalab-to/marker
+  "psutil", # for `./task/Process-Folder.ps1`
+  "torch",
+  "torchvision",
+]
+
+[tool.uv.sources]
+marker-pdf = { path = "./lib/marker" }
+
+[[tool.uv.index]] # only for install torch with gpu
+url = "https://download.pytorch.org/whl/cu126" # Please refer to <https://pytorch.org/get-started/locally/> and select the appropriate index.
+
+[project.optional-dependencies]
+marker_gui = [ # https://github.com/datalab-to/marker#interactive-app
+  "streamlit>=1.53.0",
+  "streamlit-ace>=0.1.1",
+]
