@@ -12,10 +12,22 @@ dependencies = [
 ]
 
 [tool.uv.sources]
-marker-pdf = { path = "./lib/marker" }
+marker-pdf  = { path = "./lib/marker" } # Need to download, edit, compile, and install it.
+# Please refer to <https://pytorch.org/get-started/locally/> and select the appropriate index.
+torch       = { index = "pytorch-cuda126" }
+torchvision = { index = "pytorch-cuda126" }
+# torch       = { index = "pytorch-cuda130" }
+# torchvision = { index = "pytorch-cuda130" }
 
-[[tool.uv.index]] # only for install torch with gpu
-url = "https://download.pytorch.org/whl/cu126" # Please refer to <https://pytorch.org/get-started/locally/> and select the appropriate index.
+[[tool.uv.index]]
+name = "pytorch-cuda126"
+url = "https://download.pytorch.org/whl/cu126" 
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cuda130"
+url = "https://download.pytorch.org/whl/cu130" 
+explicit = true
 
 [project.optional-dependencies]
 marker_gui = [ # https://github.com/datalab-to/marker#interactive-app
